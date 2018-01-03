@@ -119,13 +119,7 @@
 		
 		<nav class="col-sm-2 col-lg-2 col-md-2 col-xs-2" id="myScrollspy">
 			<ul class="nav nav-pills nav-stacked">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#section0">PROFILE <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="profile.php">Main</a></li>
-						<li><a href="#section02">Settings</a></li>                     
-					</ul>
-				</li>
+				<li><a href="profile.php">PROFILE</a></li>
 				<li><a href="#section1">Personal Details</a></li>
 				<li><a href="#section2">Academic Qualifications</a></li>
 				<li><a href="#section3">Courses Taught</a></li>
@@ -235,6 +229,7 @@
 		<div id="section2"> 
 			<!--SSC-->
 			<legend><h2>Academic Details</h2></legend>
+			<div id="section21">
 			<form  method="POST"  onsubmit="return ac1()" name="a1"  enctype="multipart/form-data">
 				<fieldset>
 					<h3>SSC</h3>
@@ -272,6 +267,7 @@
 			</form>
 					
 			<!--HSC-->	
+			<div id="section22">
 			<form  method="POST"  onsubmit="return ac2()" name="a2"  enctype="multipart/form-data">
 					<h3>HSC</h3>
 					<br>
@@ -305,6 +301,7 @@
 			</form>
 			
 			<!--BTECH-->
+			<div id="section23">
 			<form  method="POST"  onsubmit="return ac3()" name="a3"  enctype="multipart/form-data">		
 					<h3>Bachelor's</h3>
 					<br>
@@ -351,6 +348,7 @@
 			</form>
 			
 			<!--MTECH-->
+			<div id="section24">
 			<form  method="POST"  onsubmit="return ac4()" name="a4"  enctype="multipart/form-data">		
 					<h3>Master's</h3>
 					<br>
@@ -396,6 +394,7 @@
 			</form>
 			
 			<!--PHD-->
+			<div id="section25">
 			<form  method="POST"  onsubmit="return ac5()" name="a5"  enctype="multipart/form-data">		
 					<h3>PHD</h3>
 					<br>
@@ -465,11 +464,6 @@
 						<script type="text/javascript" language="JavaScript">
 							document.write('<select name="subcategory" class="form-control" id="subcategory"><option value="">Please select course type</option></select>')
 						</script>
-						<noscript>
-							<select name="subcategory"  id="subcategory_id" >
-								<option value=""></option>
-							</select>
-						</noscript>
 						<span class="error" id="course"> </span>
 					</div>
 				</div>

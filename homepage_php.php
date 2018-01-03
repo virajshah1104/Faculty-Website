@@ -221,8 +221,7 @@ $maxdate = (date("Y")-22)."-12-31";
 	$dobyear = (int)substr($dob,0,4);
 	$yearArray = range($dobyear+12, $curyear);
 
-	$acadflag=0;
-	if(isset($_POST["submitacademic"]))
+	if(isset($_POST["submitacademic1"]))
 	{
 		$sscInstitute=$_POST["sscinstitute"];
 		$sscPercentile=$_POST["sscmarks"];
@@ -241,6 +240,19 @@ $maxdate = (date("Y")-22)."-12-31";
 		else
 			$image[0]=0;
 
+		if($image[0]==1){
+			$sql = "UPDATE academic_details SET SSC_Marksheet='$sscMarksheet' WHERE Emp2_Id=$empid";
+			$conn->query($sql);
+		}
+		
+		$sql = "UPDATE academic_details SET SSC_Institute = '$sscInstitute',SSC_Percentile = $sscPercentile,SSC_Year = $sscYear WHERE Emp2_Id=$empid";
+		if($result=$conn->query($sql))
+			header('Location:homepage.php#section22');
+		else
+			echo mysqli_error($conn);
+	}
+	if(isset($_POST["submitacademic2"]))
+	{
 		$hscInstitute=$_POST["hscinstitute"];
 		$hscPercentile=$_POST["hscmarks"];
 		if($hscPercentile==null)
@@ -258,6 +270,20 @@ $maxdate = (date("Y")-22)."-12-31";
 		else
 		$image[1]=0;
 
+		if($image[1]==1){
+			$sql = "UPDATE academic_details SET HSC_Marksheet='$hscMarksheet' WHERE Emp2_Id=$empid";
+			$conn->query($sql);
+		}
+		
+		$sql = "UPDATE academic_details SET HSC_Institute = '$hscInstitute',HSC_Percentile = $hscPercentile,HSC_Year = $hscYear WHERE Emp2_Id=$empid";
+		if($result=$conn->query($sql))
+			header('Location:homepage.php#section23');
+		else
+			echo mysqli_error($conn);
+	}
+
+	if(isset($_POST["submitacademic3"]))
+	{
 		$btechInstitute=$_POST["btechinstitute"];
 		$btechDegree=$_POST["btechdegree"];
 		$btechPercentile=$_POST["btechmarks"];
@@ -277,6 +303,20 @@ $maxdate = (date("Y")-22)."-12-31";
 		else
 			$image[2]=0;
 
+		if($image[2]==1){
+			$sql = "UPDATE academic_details SET Bachelors_Marksheet = '$btechMarksheet' WHERE Emp2_Id=$empid";
+			$conn->query($sql);
+		}
+		
+		$sql = "UPDATE academic_details SET Bachelors_In='$btechDegree',Bachelors_Institute = '$btechInstitute',Bachelors_Percentile = $btechPercentile,Bachelors_Year = $btechYear WHERE Emp2_Id=$empid";
+		if($result=$conn->query($sql))
+			header('Location:homepage.php#section24');
+		else
+			echo mysqli_error($conn);
+	}
+
+	if(isset($_POST["submitacademic4"]))
+	{
 		$mtechInstitute=$_POST["mtechinstitute"];
 		$mtechDegree=$_POST["mtechdegree"];
 		$mtechPercentile=$_POST["mtechmarks"];
@@ -295,6 +335,21 @@ $maxdate = (date("Y")-22)."-12-31";
 		}
 		else
 			$image[3]=0;
+
+		if($image[3]==1){
+			$sql = "UPDATE academic_details SET Masters_Marksheet = '$mtechMarksheet' WHERE Emp2_Id=$empid";
+			$conn->query($sql);
+		}
+		
+		$sql = "UPDATE academic_details SET Masters_In='$mtechDegree',Masters_Institute = '$mtechInstitute',Masters_Percentile = $mtechPercentile,Masters_Year = $mtechYear WHERE Emp2_Id=$empid";
+		if($result=$conn->query($sql))
+			header('Location:homepage.php#section25');
+		else
+			echo mysqli_error($conn);
+	}
+
+	if(isset($_POST["submitacademic5"]))
+	{
 		$phdDegree=$_POST["phddegree"];
 		$phdInstitute=$_POST["phdinstitute"];
 		$phdPercentile=$_POST["phdmarks"];
@@ -313,46 +368,17 @@ $maxdate = (date("Y")-22)."-12-31";
 		else
 			$image[4]=0;
 
-		if($acadflag!=1){
-		if($image[0]==1){
-			$sql = "UPDATE academic_details SET SSC_Marksheet='$sscMarksheet' WHERE Emp2_Id=$empid";
-			$conn->query($sql);
-		}
-		if($image[1]==1){
-			$sql = "UPDATE academic_details SET HSC_Marksheet='$hscMarksheet' WHERE Emp2_Id=$empid";
-			$conn->query($sql);
-		}
-		if($image[2]==1){
-			$sql = "UPDATE academic_details SET Bachelors_Marksheet = '$btechMarksheet' WHERE Emp2_Id=$empid";
-			$conn->query($sql);
-		}
-		if($image[3]==1){
-			$sql = "UPDATE academic_details SET Masters_Marksheet = '$mtechMarksheet' WHERE Emp2_Id=$empid";
-			$conn->query($sql);
-		}
 		if($image[4]==1){
 			$sql = "UPDATE academic_details SET Phd_Marksheet = '$phdMarksheet' WHERE Emp2_Id=$empid";
 			$conn->query($sql);
 		}
-		$sql = "UPDATE academic_details SET SSC_Institute = '$sscInstitute',SSC_Percentile = $sscPercentile,SSC_Year = $sscYear,HSC_Institute = '$hscInstitute',HSC_Percentile = $hscPercentile,HSC_Year = $hscYear,Bachelors_In = '$btechDegree',Bachelors_Institute = '$btechInstitute',Bachelors_Year = $btechYear,Bachelors_Percentile = $btechPercentile,Masters_In = '$mtechDegree',Masters_Year = $mtechYear,Masters_Percentile = $mtechPercentile,Masters_Institute = '$mtechInstitute',Phd_In = '$phdDegree',Phd_Institute = '$phdInstitute',Phd_Year = $phdYear,Phd_Percentile = $phdPercentile WHERE Emp2_Id=$empid";
+		
+		$sql = "UPDATE academic_details SET Phd_In='$phdDegree',Phd_Institute = '$phdInstitute',Phd_Percentile = $phdPercentile,Phd_Year = $phdYear WHERE Emp2_Id=$empid";
 		if($result=$conn->query($sql))
-				{
-					header('Location:profile.php#section2');
-
-				}else
-				{
-				echo mysqli_error($conn);
-				}
-			}
+			header('Location:profile.php#section2');
+		else
+			echo mysqli_error($conn);
 	}
-
-
-
-
-
-
-
-
 
 	if(isset($_POST["submitcourses"]))
 	{

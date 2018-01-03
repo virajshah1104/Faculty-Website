@@ -443,7 +443,7 @@ function coursesvalidation()
 	if(course==0)
 		document.getElementById("category_id").focus();
 	else if(subcategory==0)
-			document.getElementById("subcategory_id").focus();
+			document.getElementById("subcategory").focus();
 		 else if(year==0)
 				document.getElementById("courseyear_id").focus();
 			  else if(sem==0)
