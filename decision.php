@@ -1,5 +1,18 @@
 <?php
-	$priv = array(1,1,-1,-1);
+	$priv = array(-1,-1,-1,-1);
+	$empid=$_SESSION["Emp_Id"];
+	$conn = mysqli_connect("localhost","root","admin","Faculty") or die("Connection failed".mysqli_connect_error());
+	$sql = "SELECT * FROM login where Emp_Id=$empid";
+	$result = $conn->query($sql);
+	$row = mysqli_fetch_assoc($result);
+	if($row["P1"] == 'TRUE')
+		$priv[0] = 1;
+	if($row["P2"] == 'TRUE')
+		$priv[1] = 1;
+	if($row["P3"] == 'TRUE')
+		$priv[2] = 1;
+	if($row["P4"] == 'TRUE')
+		$priv[3] = 1;
 	/*
 	0 = Profile & Forms
 	1 = Edit Privelleges

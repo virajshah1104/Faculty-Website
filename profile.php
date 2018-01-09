@@ -1,4 +1,4 @@
-<?php include 'profile_php.php'; ?>
+<?php include 'profile_php.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,11 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=NTR' rel='stylesheet'>
   <style>
+  body{
+	   font-family: 'NTR';font-size: 23px;
+  }
 
   th, td {
     padding: 25px;
@@ -19,6 +23,7 @@
       top: 75px;
       position:fixed;
       float:left;
+	  font-size:17px;
   }
      .navbar {
      border : none;
@@ -35,13 +40,9 @@
 	 
   }
  
-  #section1 {color: #ff;}
-  #section2 {color: #ff;}
-  #section3 {color: #ff;}
-  #section41 {color: #ff;}
-  #section42 {color: #ff;}
+
   
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width:1100px) {
    #section00, #section1, #section2, #section3, #section41, #section42 ,#section43, #section51, #section52, #section53 , #section6 , #section7 {
        margin-left:100px;
     }
@@ -134,6 +135,18 @@
         width: 100%;
     }
 }
+h1{
+	font-size:45px;
+}
+
+h2{
+	font-size:30px;
+}
+::-webkit-scrollbar{
+	width : 0px;
+	height : 0px;
+}
+	
 </style>
        <script language="javascript" type="text/javascript">
             function dynamicdropdown(listindex)
@@ -203,7 +216,7 @@
  </script>  
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-
+<?php include 'decision.php'; ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -217,7 +230,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       
       <ul class="nav navbar-nav navbar-right">
-		<li><a href="#"><button type="button" class="btn btn-primary btn-md " data-toggle="modal" data-target="#myModal">Generate CV</button></a></li>
+		    <li><a href="#"><button type="button" class="btn btn-primary btn-md " data-toggle="modal" data-target="#myModal">Generate CV</button></a></li>
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
       </ul>
     </div>
@@ -254,9 +267,10 @@
   <div class="row">
 
 
-    <nav class="col-sm-3 col-lg-2 col-md-3" id="myScrollspy">
+    <nav class="col-sm-2 col-lg-2 col-md-2 col-xs-2" id="myScrollspy">
       <ul class="nav nav-pills nav-stacked">
         <li><a href="#">PROFILE</a></li>
+        <hr>
         <li><a href="#section1">Personal Details</a></li>
         <li><a href="#section2">Academic Qualifications</a></li>
         <li><a href="#section3">Courses Taught</a></li>
@@ -280,229 +294,241 @@
         </li>
 		<li><a href="#section6">Co curricular activities</a></li>
 		<li><a href="#section7">Extra curricular activities</a></li>
+    <hr>
+    <li id="section21"><a href="main.php#section21">Faculty List</a></li>
+    <li id="section22"><a href="main.php#section22">Add Member</a></li>
+    <li id="section23"><a href="main.php#section23">Report Generation</a></li>
       </ul>
     </nav>
 	
-  <div class="col-sm-9 col-lg-9 col-md-9">
+<div class="col-sm-10 col-lg-10 col-md-10 col-xs-10">
 
-			<div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
-				<div class="profile-img" id="section00" >
-					<center>
-					<div class="thumbnail img-responsive" style="width:30%">
-							<?php echo '<img  src="data:image/jpeg;base64,'.base64_encode($profilepic).'"/>';?>  				
-					</div>
-					<form method="post" action="" enctype="multipart/form-data">  
-						Upload Photo Here: <input type="file" name="image" id="image">  
-						<br>  
-						<input type="submit" name="submitprofile" id="insert_profile" value="Save Changes" class="btn btn-info">  
-					</form>  
-					<br>
-					</center>	
-				</div>
+	<!--PROFILE PHOTO-->
+	<div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+		<div class="profile-img" id="section00" >
+			<center>
+			<div class="thumbnail img-responsive" style="width:30%">
+					<?php echo '<img  src="data:image/jpeg;base64,'.base64_encode($profilepic).'"/>';?>  				
 			</div>
-
-
-
+			<form method="post" action="" enctype="multipart/form-data">  
+				Upload Photo Here: <input type="file" name="image" id="image">  
+				<br>  
+				<input type="submit" name="submitprofile" id="insert_profile" value="Save Changes" class="btn btn-info">  
+			</form>  
+			<br>
+			</center>	
+		</div>
+	</div>
 	
- <div id="section1">
+	<div id="section1">	
+	
+		<legend><h1>Personal details  <a href="homepage.php#section1"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
+		<div class="form-group">
+			Name: <?php if(!($name == '')) echo "<b>$name</b>";?>
+		</div>
+		<div class="form-group">
+			Gender: <?php if(!($gender == 'null')) echo "<b>$gender</b>";?>
+		</div>
+		<div class="form-group">
+			Email: <?php if(!($email == '')) echo "<b>$email</b>";?>
+		</div>
+		<div class="form-group">
+			Contact no: <?php if(!($contact == '')) echo "<b>$contact</b>";?>
+		</div>
+		<div class="form-group">
+			Date of Birth: <?php if(!($dob == '1950-01-01')) echo "<b>$dob</b>";?>
+		</div>
+		<div class="form-group">
+			Address: <?php if(!($address == '')) echo "<b>$address</b>";?>
+		</div>
+		<div class="form-group">
+			Joining Position: <?php if(!($join_pos == '')) echo "<b>".$join_pos."</b>";?><br>
+			Joining Date: <?php if(!($join_date == '1950-01-01')) echo "<b>$join_date</b>";?>
+		</div>
+		<h2>Promotions</h2>
+		<div class="form-group">
+			Promotion 1: <?php if(!($pro1 == '')) echo "<b>$pro1</b>";?><br>
+			Date: <?php if(!($pro1_date == '1950-01-01')) echo "<b>$pro1_date</b>";?>
+		</div>
+		<div class="form-group">
+			Promotion 2: <?php if(!($pro2== '')) echo "<b>$pro2</b>";?><br>
+			Date: <?php if(!($pro2_date == '1950-01-01')) echo "<b>$pro2_date</b>";?>
+		</div>
+		<div class="form-group">
+			Promotion 3: <?php if(!($pro3 == '')) echo "<b>$pro3</b>";?><br>
+			Date: <?php if(!($pro3_date == '1950-01-01')) echo "<b>$pro3_date</b>";?>	
+		</div>
+	
+	</div>
+
+	<div id="section2"> 
 		
- <legend><h1>Personal details  <a href="homepage.php#section1"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
-					<div class="form-group">
-						Name: <?php if(!($name == '')) echo "<b>$name</b>";?>
-					</div>
-					<div class="form-group">
-						Gender: <?php if(!($gender == 'null')) echo "<b>$gender</b>";?>
-					</div>
-					<div class="form-group">
-						Email: <?php if(!($email == '')) echo "<b>$email</b>";?>
-					</div>
-					<div class="form-group">
-						Contact no: <?php if(!($contact == '')) echo "<b>$contact</b>";?>
-					</div>
-					<div class="form-group">
-						Date of Birth: <?php if(!($dob == '1950-01-01')) echo "<b>$dob</b>";?>
-					</div>
-					<div class="form-group">
-						Address: <?php if(!($address == '')) echo "<b>$address</b>";?>
-					</div>
-					<div class="form-group">
-						Joining Position: <?php if(!($join_pos == '')) echo "<b>".$join_pos."</b>";?><br>
-						Joining Date: <?php if(!($join_date == '1950-01-01')) echo "<b>$join_date</b>";?>
-					</div>
-					<h2>Promotions</h2>
-					<div class="form-group">
-						Promotion 1: <?php if(!($pro1 == '')) echo "<b>$pro1</b>";?><br>
-						Date: <?php if(!($pro1_date == '1950-01-01')) echo "<b>$pro1_date</b>";?>
-					</div>
-					<div class="form-group">
-						Promotion 2: <?php if(!($pro2== '')) echo "<b>$pro2</b>";?><br>
-						Date: <?php if(!($pro2_date == '1950-01-01')) echo "<b>$pro2_date</b>";?>
-					</div>
-					<div class="form-group">
-						Promotion 3: <?php if(!($pro3 == '')) echo "<b>$pro3</b>";?><br>
-						Date: <?php if(!($pro3_date == '1950-01-01')) echo "<b>$pro3_date</b>";?>	
-					</div>
+		<legend><h1>Academic Details  <a href="homepage.php#section2"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
+		
+			<?php
+				if(!empty($sscInstitute) || !empty($hscInstitute) || !empty($bachelorsInstitute) || !empty($mastersInstitute) || !empty($phdInstitute))
+				{
+					echo "<div class='table-responsive '>";
+					echo "<table class='table table-bordered'cellpadding='10'>";
+					echo "<tr>";
+					echo "<th>Qualification</th>";
+					echo "<th>Institute</th>";
+					echo "<th>Percentile/CGPA</th>";
+					echo "<th>Year Of Passing</th>";
+					echo "<th>Marksheet</th>";
+					echo "</tr>";
+					if(!empty($sscInstitute))
+						echo "<tr><td>SSC</td><td>$sscInstitute</td><td>$sscPercentile</td><td>$sscYear</td><td><center>".$ssc."</center></td></tr>";
+					
+					if(!empty($hscInstitute))
+						echo "<tr><td>HSC</td><td>$hscInstitute</td><td>$hscPercentile</td><td>$hscYear</td><td><center>".$hsc."</center></td></tr>";
+					
+					if(!empty($bachelorsInstitute))
+						echo "<tr><td>Bachelors In $bachelorsIn</td><td>$bachelorsInstitute</td><td>$bachelorsPercentile</td><td>$bachelorsYear</td><td><center>".$bach."</center></td></tr>";
+					
+					if(!empty($mastersInstitute))
+						echo "<tr><td>Masters In $mastersIn</td><td>$mastersInstitute</td><td>$mastersPercentile</td><td>$mastersYear</td><td><center>".$mast."</center></td></tr>";
+					
+					if(!empty($phdInstitute))
+						echo "<tr><td>PHD in $phdIn</td><td>$phdInstitute</td><td>$phdPercentile</td><td>$phdYear</td><td><center>".$phdi."</center></td></tr>";
+					
+					echo "</table>";
+					echo "</div>";
+				}
+				else
+					echo "<h4>Details Not Filled</h4>";
+				
+			?>
+		
+	</div>
 
-</div>
-
- 
-<div id="section2"> 
-<legend><h1>Academic Details  <a href="homepage.php#section2"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
-<?php
-if(!empty($sscInstitute) || !empty($hscInstitute) || !empty($bachelorsInstitute) || !empty($mastersInstitute) || !empty($phdInstitute)){
-
-	echo "<table border='1px' width='100%' cellpadding='10'>";
-		echo "<tr>";
-		echo "<th>Qualification</th>";
-		echo "<th>Institute</th>";
-		echo "<th>Percentile/CGPA</th>";
-		echo "<th>Year Of Passing</th>";
-		echo "<th>Marksheet</th>";
-		echo "</tr>";
-		if(!empty($sscInstitute))
+	<div id="section3"> 
+		
+		<legend><h1>Courses Taught  <a href="homepage.php#section3"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
+		<?php 
+		if($temp>0)
 		{
-			echo "<tr><td>SSC</td><td>$sscInstitute</td><td>$sscPercentile</td><td>$sscYear</td><td><center>".$ssc."</center></td></tr>";
-		}
-		if(!empty($hscInstitute))
-		{
-			echo "<tr><td>HSC</td><td>$hscInstitute</td><td>$hscPercentile</td><td>$hscYear</td><td><center>".$hsc."</center></td></tr>";
-		}
-		if(!empty($bachelorsInstitute))
-		{
-			echo "<tr><td>Bachelors In $bachelorsIn</td><td>$bachelorsInstitute</td><td>$bachelorsPercentile</td><td>$bachelorsYear</td><td><center>".$bach."</center></td></tr>";
-		}
-		if(!empty($mastersInstitute))
-		{
-			echo "<tr><td>Masters In $mastersIn</td><td>$mastersInstitute</td><td>$mastersPercentile</td><td>$mastersYear</td><td><center>".$mast."</center></td></tr>";
-		}
-		if(!empty($phdInstitute))
-		{
-			echo "<tr><td>PHD in $phdIn</td><td>$phdInstitute</td><td>$phdPercentile</td><td>$phdYear</td><td><center>".$phdi."</center></td></tr>";
-		}
-	echo "</table>";
-}
-else
-{
-	echo "<h4>Details Not Filled</h4>";
-}
-?>
-</div>
-
-<div id="section3"> 
- 
-<legend><h1>Courses Taught  <a href="homepage.php#section3"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
-<?php 
-if($temp>0){
-		echo "<table border='1px' width='100%'>";
-		echo "<tr>";
-		echo "<th>Sr.No.</th>";
-		echo "<th>Course Category</th>";
-		echo "<th>Course Id</th>";
-		echo "<th>Year</th>";
-		echo "<th>Semester</th>";
-		echo "</tr>";
-		for($i=0;$i<$temp;$i++)
-		{
-			echo "<tr><td>".($i+1)."</td><td>$coursecategory[$i]</td><td>$courseid[$i]</td><td>$courseyear[$i]</td><td>$coursesem[$i]</td></tr>";
-		}
-		echo "</table>";
+			echo "<div class='table-responsive'>";
+			echo "<table class='table table-bordered' border='1px' width='100%'>";
+			echo "<tr>";
+			echo "<th>Sr.No.</th>";
+			echo "<th>Course Category</th>";
+			echo "<th>Course Id</th>";
+			echo "<th>Year</th>";
+			echo "<th>Semester</th>";
+			echo "</tr>";
+			
+			for($i=0;$i<$temp;$i++)
+				echo "<tr><td>".($i+1)."</td><td>$coursecategory[$i]</td><td>$courseid[$i]</td><td>$courseyear[$i]</td><td>$coursesem[$i]</td></tr>";
+			
+			echo "</table>";
+			echo "</div>";
 		}
 		else
 			echo "<h4>No Courses Registered</h4>";
 		?>
-</div>
+		
+	</div>
 
-<div id="section41">
-<legend><h1>Publications</span></h1></legend>
-					<h2>Books  <a href="homepage.php#section41"><span class="glyphicon glyphicon-edit"></span></a></h2>
-					<?php
-					$sql="SELECT * FROM publication_books WHERE Emp1_Id=$empid";
-					$result=$conn->query($sql);
-					if(mysqli_num_rows($result) > 0)
-					{
-						$pubbooks=1;
-						echo "<table border='1px' width='100%'>";
-						echo "<tr>";
-						echo "<th>Sr.No.</th>";
-						echo "<th>Book Name</th>";
-						echo "<th>ISBN</th>";
-						echo "<th>Published By</th>";
-						echo "<th>Date Published</th>";
-						echo "<th>Author</th>";
-						echo "<th>Author Institute</th>";
-						echo "<th>Co-Author 1</th>";
-						echo "<th>Co-Author 1 Institute</th>";
-						echo "<th>Co-Author 2</th>";
-						echo "<th>CO-Author 2 Institute</th>";
-						echo "<th>Co-Author 3</th>";
-						echo "<th>CO-Author 3 Institute</th>";
-						echo "<th>Edition</th>";
-						echo "<th>Cover Picture</th>";
-						echo "</tr>";
-						while($row=mysqli_fetch_assoc($result))
-						{
-              if($row["Cover"] == null)
-              $coverbook="Image Not Inserted";
-              else
-              $coverbook='<div class="thumbnail img-responsive" style="width:100%;height:100%"><img id="coverimage" src="data:image/jpeg;base64,'.base64_encode($row["Cover"]).'"/></div>';
-
-							echo '<tr><td>'.$pubbooks.'</td><td>'.$row["Book_Name"].'</td><td>'.$row["ISBN"].'</td><td>'.$row["Publisher_Name"].'</td><td>'.$row["Date_Published"].'</td><td>'.$row["Author"].'</td><td>'.$row["Author_INST"].'</td><td>'.$row["COA1"].'</td><td>'.$row["COA1_INST"].'</td><td>'.$row["COA2"].'</td><td>'.$row["COA2_INST"].'</td><td>'.$row["COA3"].'</td><td>'.$row["COA3_INST"].'</td><td>'.$row["Edition"].'</td><td><center>'.$coverbook.'</center></td></tr>';
-							$pubbooks++;
-						}
-						echo "</table>";
-					}
-					else{
-						echo "<h4>No Books Published</h4>";
-					}	
-					?>
-						
-</div>
-
-<div id="section42">
-<h2>Journals  <a href="homepage.php#section42"><span class="glyphicon glyphicon-edit"></span></a></h2>
-				<?php
-					$sql="SELECT * FROM publication_journals WHERE Emp4_Id=$empid";
-					$result=$conn->query($sql);
-					if(mysqli_num_rows($result) > 0)
-					{
-						$pubjour=1;
-						echo "<table border='1px' width='100%'>";
-						echo "<tr>";
-						echo "<th>Sr.No.</th>";
-						echo "<th>Journal Name</th>";
-						echo "<th>Author</th>";
-						echo "<th>Title</th>";
-						echo "<th>Date</th>";
-						echo "<th>Type</th>";
-						echo "<th>Book Chapter</th>";
-						echo "<th>Peer Reviewed</th>";
-						echo "<th>Impact Factor</th>";												
-						echo "<th>Paper PDF</th>";
-						echo "<th>Certificate</th>";
-						echo "</tr>";
-						while($row=mysqli_fetch_assoc($result))
-						{
-              if($row["Certificate"] == null)
-              $jourcert="Image Not Inserted";
-              else
-              $jourcert='<div class="thumbnail img-responsive" style="width:100%;height:100%"><img id="jourcert" src="data:image/jpeg;base64,'.base64_encode($row["Certificate"]).'"/></div>';
-            if($row["Paper_PDF"] == null)
-              $jourpdf="Image Not Inserted";
-              else
-              $jourpdf='<div class="thumbnail img-responsive" style="width:100%;height:100%"><img id="jourpdf" src="data:image/jpeg;base64,'.base64_encode($row["Paper_PDF"]).'"/></div>';
-
-							echo '<tr><td>'.$pubjour.'</td><td>'.$row["Name"].'</td><td>'.$row["Author"].'</td><td>'.$row["Title"].'</td><td>'.$row["Date"].'</td><td>'.$row["Type"].'</td><td>'.$row["Book_Chapter"].'</td><td>'.$row["Peer_Reviewed"].'</td><td>'.$row["Impact_Factor"].'</td><td><center>'.$jourpdf.'</center></td><td><center>'.$jourcert.'</center></td>';
-							$pubjour++;
-						}
-						echo "</table>";
-					}
-					else{
-						echo "<h4>No Journals Published</h4>";
-					}	
-					?>		
-</div>
-
+	<div id="section41">
+		
+		<legend><h1>Publications</span></h1></legend>
+			<h2>Books  <a href="homepage.php#section41"><span class="glyphicon glyphicon-edit"></span></a></h2>
+			<?php
+			$sql="SELECT * FROM publication_books WHERE Emp1_Id=$empid";
+			$result=$conn->query($sql);
+			if(mysqli_num_rows($result) > 0)
+			{	
+				echo "<div class='table-responsive '>";
+				$pubbooks=1;
+				echo "<table class='table table-bordered'>";
+				echo "<tr>";
+				echo "<th>Sr.No.</th>";
+				echo "<th>Book Name</th>";
+				echo "<th>ISBN</th>";
+				echo "<th>Published By</th>";
+				echo "<th>Date Published</th>";
+				echo "<th>Author</th>";
+				echo "<th>Author Institute</th>";
+				echo "<th>Co-Author 1</th>";
+				echo "<th>Co-Author 1 Institute</th>";
+				echo "<th>Co-Author 2</th>";
+				echo "<th>CO-Author 2 Institute</th>";
+				echo "<th>Co-Author 3</th>";				
+				echo "<th>Cover Picture</th>";
+				echo "<th>CO-Author 3 Institute</th>";
+				echo "<th>Edition</th>";
+				echo "</tr>";
 				
+				while($row=mysqli_fetch_assoc($result))
+				{
+					if($row["Cover"] == null)
+						$coverbook="Image Not Inserted";
+					else
+						$coverbook='<div class="thumbnail img-responsive" style="width:100%;height:100%"><img id="coverimage" src="data:image/jpeg;base64,'.base64_encode($row["Cover"]).'"/></div>';
+
+					echo '<tr><td>'.$pubbooks.'</td><td>'.$row["Book_Name"].'</td><td>'.$row["ISBN"].'</td><td>'.$row["Publisher_Name"].'</td><td>'.$row["Date_Published"].'</td><td>'.$row["Author"].'</td><td>'.$row["Author_INST"].'</td><td>'.$row["COA1"].'</td><td>'.$row["COA1_INST"].'</td><td>'.$row["COA2"].'</td><td>'.$row["COA2_INST"].'</td><td>'.$row["COA3"].'</td><td>'.$row["COA3_INST"].'</td><td>'.$row["Edition"].'</td><td><center>'.$coverbook.'</center></td></tr>';
+					
+					$pubbooks++;
+				}
+
+				echo "</table>";
+				echo "</div>";
+			}
+			else
+				echo "<h4>No Books Published</h4>";	
+		?>	
+			
+	</div>
+
+	<div id="section42">
+		
+		<h2>Journals <a href="homepage.php#section42"><span class="glyphicon glyphicon-edit"></span></a></h2>
+		<?php
+			$sql="SELECT * FROM publication_journals WHERE Emp4_Id=$empid";
+			$result=$conn->query($sql);
+			if(mysqli_num_rows($result) > 0)
+			{
+				echo "<div class='table-responsive'>";
+				$pubjour=1;
+				echo "<table class='table table-bordered' border='1px' width='100%'>";
+				echo "<tr>";
+				echo "<th>Sr.No.</th>";
+				echo "<th>Journal Name</th>";
+				echo "<th>Author</th>";
+				echo "<th>Title</th>";
+				echo "<th>Date</th>";
+				echo "<th>Type</th>";
+				echo "<th>Book Chapter</th>";
+				echo "<th>Peer Reviewed</th>";
+				echo "<th>Impact Factor</th>";												
+				echo "<th>Paper PDF</th>";
+				echo "<th>Certificate</th>";
+				echo "</tr>";
+				while($row=mysqli_fetch_assoc($result))
+				{
+					if($row["Certificate"] == null)
+						$jourcert="Image Not Inserted";
+					else
+						$jourcert='<div class="thumbnail img-responsive" style="width:100%;height:100%"><img id="jourcert" src="data:image/jpeg;base64,'.base64_encode($row["Certificate"]).'"/></div>';
+					
+					if($row["Paper_PDF"] == null)
+						$jourpdf="Image Not Inserted";
+					else
+						$jourpdf='<div class="thumbnail img-responsive" style="width:100%;height:100%"><img id="jourpdf" src="data:image/jpeg;base64,'.base64_encode($row["Paper_PDF"]).'"/></div>';
+
+					echo '<tr><td>'.$pubjour.'</td><td>'.$row["Name"].'</td><td>'.$row["Author"].'</td><td>'.$row["Title"].'</td><td>'.$row["Date"].'</td><td>'.$row["Type"].'</td><td>'.$row["Book_Chapter"].'</td><td>'.$row["Peer_Reviewed"].'</td><td>'.$row["Impact_Factor"].'</td><td><center>'.$jourpdf.'</center></td><td><center>'.$jourcert.'</center></td>';
+					
+					$pubjour++;
+				}
+				echo "</table>";
+				echo "</div>";
+			}
+			else
+				echo "<h4>No Journals Published</h4>";
+			?>	
+	
+	</div>
 
 <div id="section43">
 <h2>Conferences  <a href="homepage.php#section43"><span class="glyphicon glyphicon-edit"></span></a></h2>
@@ -511,8 +537,9 @@ if($temp>0){
 					$result=$conn->query($sql);
 					if(mysqli_num_rows($result) > 0)
 					{
+						echo "<div class='table-responsive'>";
 						$pubconf=1;
-						echo "<table border='1px' width='100%'>";
+						echo "<table class='table table-bordered' border='1px' width='100%'>";
 						echo "<tr>";
 						echo "<th>Sr.No.</th>";
 						echo "<th>Conferences Name</th>";
@@ -539,6 +566,7 @@ if($temp>0){
 							$pubconf++;
 						}
 						echo "</table>";
+						echo "</div>";
 					}
 					else{
 						echo "<h4>No Conferences Reistered</h4>";
@@ -546,10 +574,8 @@ if($temp>0){
 					?>
 </div>
 
-
-
-
 <div id="section51">
+
 <legend><h1>STTP</h1></legend>
 					<h2>STTP attended  <a href="homepage.php#section51"><span class="glyphicon glyphicon-edit"></span></a></h2>
 					<?php
@@ -557,8 +583,9 @@ if($temp>0){
 					$result=$conn->query($sql);
 					if(mysqli_num_rows($result) > 0)
 					{
+						echo "<div class='table-responsive'>";
 						$sttpattended=1;
-						echo "<table border='1px' width='100%'>";
+						echo "<table class='table table-bordered' border='1px' >";
 						echo "<tr>";
 						echo "<th>Sr.No.</th>";
 						echo "<th>Title</th>";
@@ -582,15 +609,14 @@ if($temp>0){
 							$sttpattended++;
 						}
 						echo "</table>";
+						echo "</div>";
 					}
 					else{
 						echo "<h4>No STTP Events Attended</h4>";
 					}	
 					?>
+					
 </div>
-
-
-
 
 <div id="section52">
 
@@ -600,8 +626,9 @@ if($temp>0){
 					$result=$conn->query($sql);
 					if(mysqli_num_rows($result) > 0)
 					{
+						echo "<div class='table-responsive'>";
 						$sttporganized=1;
-						echo "<table border='1px' width='100%'>";
+						echo "<table class='table table-bordered' border='1px' width='100%'>";
 						echo "<tr>";
 						echo "<th>Sr.No.</th>";
 						echo "<th>Event Name</th>";
@@ -618,14 +645,13 @@ if($temp>0){
 							$sttporganized++;
 						}
 						echo "</table>";
+						echo "</div>";
 					}
 					else{
 						echo "<h4>No STTP Events Organized</h4>";
 					}
 					?>
 </div>
-
-
 
 <div id="section53">
 <legend><h2>STTP delivered  <a href="homepage.php#section53"><span class="glyphicon glyphicon-edit"></span></a></h2></legend>
@@ -634,8 +660,9 @@ if($temp>0){
 					$result=$conn->query($sql);
 					if(mysqli_num_rows($result) > 0)
 					{
+						echo "<div class='table-responsive'>";
 						$sttpdelivered=1;
-						echo "<table border='1px' width='100%'>";
+						echo "<table class='table table-bordered' border='1px' width='100%'>";
 						echo "<tr>";
 						echo "<th>Sr.No.</th>";
 						echo "<th>Event Name</th>";
@@ -648,19 +675,17 @@ if($temp>0){
 						echo "</tr>";
 						while($row=mysqli_fetch_assoc($result))
 						{
-							echo '<tr><td>'.$sttpdelivered.'</td><td>'.$row["Name"].'</td><td>'.$row["Description"].'</td><td>'.$row["Type"].'</td><td>'.$row["Duration"].'</td><td>'.$row["Place"].'</td><td>'.$row["Date_From"].'</td><td>'.$row["Date_To"].'</td>';
+							echo '<tr><td>'.$sttpdelivered.'</td><td>'.$row["Name"].'</td><td>'.$row["Description"].'</td><td>'.$row["Event_Type"].'</td><td>'.$row["Duration"].'</td><td>'.$row["Place"].'</td><td>'.$row["Date_From"].'</td><td>'.$row["Date_To"].'</td>';
 							$sttpdelivered++;
 						}
 						echo "</table>";
+						echo "</div>";
 					}
 					else{
 						echo "<h4>No STTP Events Delivered</h4>";
 					}
 					?>
 </div>
-	  
-
-
 
 <div id="section6">
 
@@ -670,8 +695,9 @@ if($temp>0){
 					$result=$conn->query($sql);
 					if(mysqli_num_rows($result) > 0)
 					{
+						echo "<div class='table-responsive'>";
 						$cocurr=1;
-						echo "<table border='1px' width='100%'>";
+						echo "<table class='table table-bordered' border='1px' width='100%'>";
 						echo "<tr>";
 						echo "<th>Sr.No.</th>";
 						echo "<th>Activity Name</th>";
@@ -686,6 +712,7 @@ if($temp>0){
 							$cocurr++;
 						}
 						echo "</table>";
+						echo "</div>";
 					}
 					else{
 						echo "<h4>No Co-Curricular Activities Registered</h4>";
@@ -700,8 +727,9 @@ if($temp>0){
 					$result=$conn->query($sql);
 					if(mysqli_num_rows($result) > 0)
 					{
+						echo "<div class='table-responsive'>";
 						$extra=1;
-						echo "<table border='1px' width='100%'>";
+						echo "<table class='table table-bordered' border='1px' width='100%'>";
 						echo "<tr>";
 						echo "<th>Sr.No.</th>";
 						echo "<th>Activity Name</th>";
@@ -716,6 +744,7 @@ if($temp>0){
 							$extra++;
 						}
 						echo "</table>";
+						echo "</div>";
 					}
 					else{
 						echo "<h4>No Extra Activities Registered</h4>";

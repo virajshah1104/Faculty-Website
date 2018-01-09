@@ -87,7 +87,6 @@ if(isset($_POST["submit"]))
 		if($row == NULL)
 			$err[0] = "* Please Enter A Valid Employee Id";
 		$pass1 = $row["Password"];
-		$role1 = $row["Role"];
 		if($pass == $pass1)
 		{
 			$_SESSION["Emp_Id"]=$empid;

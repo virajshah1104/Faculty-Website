@@ -1,4 +1,5 @@
 <?php
+session_start();
 $id = $_GET["val"];
 $conn = mysqli_connect("localhost","root","admin","Faculty") or die("Connection failed".mysqli_connect_error());
 date_default_timezone_set("Asia/Kolkata");
@@ -125,7 +126,7 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a style="color:white;" href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+				<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
 			</ul>
 		</div>
 		</div>
@@ -135,19 +136,11 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
   
 		<nav class="col-sm-3" id="myScrollspy">
 			<ul class="nav nav-pills nav-stacked">
-				<li class="dropdown" id="section1">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="profile.html#section0">PROFILE <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#section11">Main</a></li>
-						<li><a href="#section12">Settings</a></li>                     
-					</ul></li>
-					<hr>
-			<li id="section21"><a href="adminpg.php">Faculty List</a></li>
-			<li id="section22"><a href="addfac.php">Add faculty</a></li>
-			<li id="section23"><a href="MAIN4.php#section23">Report Generation</a></li>
+			<li id="section0"><a href="profile.php#section0">PROFILE </a></li>
 			<hr>
-			<li id="section3"><a href="profile.php">Set Up Profile</a></li>
-			</ul>
+			<li id="section21"><a href="main.php#section21">Faculty List</a></li>
+			<li id="section22"><a href="main.php#section22">Add faculty</a></li>
+			<li id="section23"><a href="main.php#section23">Report Generation</a></li>
 		</nav>
 	
 			<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">

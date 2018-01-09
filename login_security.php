@@ -8,7 +8,7 @@ if(isset($_POST["submit"]))
 	$answer = $_POST["sec_ans"];
 	$sql = "UPDATE login SET Security_Question='$question',Security_Answer='$answer' WHERE Emp_Id=$empid";
 	if($conn->query($sql)){
-		header('Location:profile.php');
+		header('Location:homepage.php');
 	}
 	else
 		echo mysqli_error($conn);

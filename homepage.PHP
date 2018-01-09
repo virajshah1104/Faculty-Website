@@ -85,41 +85,17 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><button type="button" class="btn btn-primary btn-md " data-toggle="modal" data-target="#myModal">Generate CV</button></a></li>
 				<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
 			</ul>
 		</div>
 		</div>
 	</nav>
-
-	<!--GENERATE CV DIALOG-->	
-	<div class="modal fade" id="myModal" >
-		<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">Export your CV as :</h3>
-			</div>
-			<div class="modal-body">
-				<div id="word">
-					<font size="4">Word :</font><button style="background-color:white;border:none;"> <i class="fa fa-file-word-o" style="font-size:35px;color:blue"></i></button></li>
-				</div>
-			</div>
-			<br><br>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-		</div>
-	</div>
-
-	
 		<!--SIDE MENU-->
 		
 		<nav class="col-sm-2 col-lg-2 col-md-2 col-xs-2" id="myScrollspy">
 			<ul class="nav nav-pills nav-stacked">
 				<li><a href="profile.php">PROFILE</a></li>
+				<hr>
 				<li><a href="#section1">Personal Details</a></li>
 				<li><a href="#section2">Academic Qualifications</a></li>
 				<li><a href="#section3">Courses Taught</a></li>
@@ -713,7 +689,7 @@
 					<br>
 				</div>
 				<div class="form-group">
-					<input type="text" name="organisedbyattended" class="form-control" placeholder="Organised by">
+					<input type="text" name="organizedbyattended" class="form-control" placeholder="Organised by">
 					<br>
 					<br>
 				</div>
