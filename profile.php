@@ -9,10 +9,11 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href='https://fonts.googleapis.com/css?family=NTR' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=NTR' rel='stylesheet'>
   <style>
   body{
-	   font-family: 'NTR';font-size: 23px;
+	   font-family: 'NTR';
+	   font-size : 18px;
   }
 
   th, td {
@@ -22,7 +23,7 @@
   ul.nav-pills {
       top: 75px;
       position:fixed;
-      float:left;
+      
 	  font-size:17px;
   }
      .navbar {
@@ -35,13 +36,7 @@
     
 	   
     }
-	 .navbar li a, .navbar .navbar-brand {
-      color: #fff !important;
-	 
-  }
- 
-
-  
+	
   @media screen and (max-width:1100px) {
    #section00, #section1, #section2, #section3, #section41, #section42 ,#section43, #section51, #section52, #section53 , #section6 , #section7 {
        margin-left:100px;
@@ -50,12 +45,8 @@
  .btn btn-primary btn-md{
 	float:right;
  }
- #dia1{
-  float: left;
-  }
-  #dia2{
-  float : right;
-  }
+
+ 
   .modal-dialog{
   width : 375px;
   }
@@ -124,7 +115,7 @@
 
 .close12:hover,
 .close12:focus {
-    color: #bbb;
+  
     text-decoration: none;
     cursor: pointer;
 }
@@ -146,6 +137,16 @@ h2{
 	width : 0px;
 	height : 0px;
 }
+
+.glyphicon{
+	float :  right;
+	font-size : 20px;
+}
+
+.btn{
+	background-color : #1F54AB;
+}
+
 	
 </style>
        <script language="javascript" type="text/javascript">
@@ -225,15 +226,14 @@ h2{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      
     </div>
+	
     <div class="collapse navbar-collapse" id="myNavbar">
-      
-      <ul class="nav navbar-nav navbar-right">
-		    <li><a href="#"><button type="button" class="btn btn-primary btn-md " data-toggle="modal" data-target="#myModal">Generate CV</button></a></li>
-        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
-      </ul>
-    </div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#">Generate CV</button></a></li>
+			<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+			<li><a href="changepwd.php"><span class="glyphicon glyphicon-cog"></a></span></li>
+	</ul>
   </div>
 </nav>	
 <div class="modal fade" id="myModal" >
@@ -247,12 +247,8 @@ h2{
         </div>
         <div class="modal-body">
          
-		  <div id="dia1">
-			<font size="4">Excel :</font><button style="background-color:white;border:none;"> <i class="fa fa-file-excel-o" style="font-size:35px;color:green"></i></button></li>
-			</div>
-			
 			<div id="dia2">
-			<font size="4">Word :</font><button style="background-color:white;border:none;"> <i class="fa fa-file-word-o" style="font-size:35px;color:blue"></i></button></li>
+			<font size="4">PDF :</font><button style="background-color:white;border:none;"> <i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i></button></i>
 			</div>
         </div>
 		<br><br>
@@ -323,41 +319,74 @@ h2{
 	<div id="section1">	
 	
 		<legend><h1>Personal details  <a href="homepage.php#section1"><span class="glyphicon glyphicon-edit"></span></a></h1></legend>
-		<div class="form-group">
-			Name: <?php if(!($name == '')) echo "<b>$name</b>";?>
-		</div>
-		<div class="form-group">
-			Gender: <?php if(!($gender == 'null')) echo "<b>$gender</b>";?>
-		</div>
-		<div class="form-group">
-			Email: <?php if(!($email == '')) echo "<b>$email</b>";?>
-		</div>
-		<div class="form-group">
-			Contact no: <?php if(!($contact == '')) echo "<b>$contact</b>";?>
-		</div>
-		<div class="form-group">
-			Date of Birth: <?php if(!($dob == '1950-01-01')) echo "<b>$dob</b>";?>
-		</div>
-		<div class="form-group">
-			Address: <?php if(!($address == '')) echo "<b>$address</b>";?>
-		</div>
-		<div class="form-group">
-			Joining Position: <?php if(!($join_pos == '')) echo "<b>".$join_pos."</b>";?><br>
-			Joining Date: <?php if(!($join_date == '1950-01-01')) echo "<b>$join_date</b>";?>
-		</div>
-		<h2>Promotions</h2>
-		<div class="form-group">
-			Promotion 1: <?php if(!($pro1 == '')) echo "<b>$pro1</b>";?><br>
-			Date: <?php if(!($pro1_date == '1950-01-01')) echo "<b>$pro1_date</b>";?>
-		</div>
-		<div class="form-group">
-			Promotion 2: <?php if(!($pro2== '')) echo "<b>$pro2</b>";?><br>
-			Date: <?php if(!($pro2_date == '1950-01-01')) echo "<b>$pro2_date</b>";?>
-		</div>
-		<div class="form-group">
-			Promotion 3: <?php if(!($pro3 == '')) echo "<b>$pro3</b>";?><br>
-			Date: <?php if(!($pro3_date == '1950-01-01')) echo "<b>$pro3_date</b>";?>	
-		</div>
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>Name: </td><td><?php if(!($name == '')) echo "<b>$name</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Gender: </td><td><?php if(!($gender == 'null')) echo "<b>$gender</b>";?></td>
+						</tr>
+						
+						<tr>
+							<td>Email: </td><td><?php if(!($email == '')) echo "<b>$email</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Contact no: </td><td><?php if(!($contact == '')) echo "<b>$contact</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Date of Birth: </td><td><?php if(!($dob == '1950-01-01')) echo "<b>$dob</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Address: </td><td><?php if(!($address == '')) echo "<b>$address</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Joining Position: </td><td><?php if(!($join_pos == '')) echo "<b>".$join_pos."</b>";?><br></td>
+						</tr>
+						
+						<tr>
+							<td>Joining Date: </td><td><?php if(!($join_date == '1950-01-01')) echo "<b>$join_date</b>";?></td>
+						</tr>
+						<tr><td></td><td></td></tr>
+					</tbody>
+				</table>
+					
+				<h2>Promotions</h2>
+				<table class="table">
+					<tbody>	
+						<tr>
+							<td>Promotion 1: </td><td><?php if(!($pro1 == '')) echo "<b>$pro1</b>";?></td>
+						</tr>
+						
+						<tr>
+							<td>Date: </td><td><?php if(!($pro1_date == '1950-01-01')) echo "<b>$pro1_date</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Promotion 2: </td><td><?php if(!($pro2== '')) echo "<b>$pro2</b>";?></td>
+						</tr>
+						
+						<tr>
+							<td>Date: </td><td><?php if(!($pro2_date == '1950-01-01')) echo "<b>$pro2_date</b>";?></td>
+						</tr>
+					
+						<tr>
+							<td>Promotion 3: </td><td><?php if(!($pro3 == '')) echo "<b>$pro3</b>";?></td>
+						</tr>
+						
+						<tr>
+							<td>Date: </td><td><?php if(!($pro3_date == '1950-01-01')) echo "<b>$pro3_date</b>";?></td>
+						</tr>
+						<tr><td></td><td></td></tr>
+					</tbody>
+				</table>
+			</div>
 	
 	</div>
 

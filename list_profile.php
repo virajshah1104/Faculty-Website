@@ -95,8 +95,12 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
+	<link href='https://fonts.googleapis.com/css?family=NTR' rel='stylesheet'>
   <style>
+  body{
+	  font-family: 'NTR';
+	  font-size : 18px;
+  }
 	.navbar 
 		{
 			border : none;
@@ -107,6 +111,11 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
 			
 		}
  
+ ul.nav-pills 
+	{
+	  top: 75px;
+	  
+	}
  
   </style>
 </head>
@@ -134,7 +143,7 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
 		  
 	<div class="container-fluid">
   
-		<nav class="col-sm-3" id="myScrollspy">
+		<nav class="col-sm-2 col-lg-2 col-md-2 col-xs-2" id="myScrollspy">
 			<ul class="nav nav-pills nav-stacked">
 			<li id="section0"><a href="profile.php#section0">PROFILE </a></li>
 			<hr>
@@ -143,33 +152,63 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
 			<li id="section23"><a href="main.php#section23">Report Generation</a></li>
 		</nav>
 	
-			<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
-			<h3>Faculty Details :</h3>
-			<font size="3">
-			<div class="form-group">
-				<?php echo $profilepic; ?>
+			<div class="col-sm-10 col-lg-10 col-md-10 col-xs-10">
+				
+			
+			<div class="col-sm-5 col-lg-3 col-md-4 col-xs-5">
+				
+				<div class="form-group ">
+				<h3>Faculty Details :</h3>
+					<?php echo $profilepic; ?>
+				</div>
 			</div>
-			<br>
-			<div class="form-group">
-				Employee Id : <?php echo $id; ?>
-			</div>
-			<div class="form-group">
-				Name: <?php echo $name;?><br>
-				Age: <?php echo $years_exp; ?>
-			</div>
-			<div class="form-group">
-				E-mail address  : <?php echo $email; ?>
-			</div>
-			<div class="form-group">
-				Joining Position: <?php echo $join_pos; ?><br>
-				Joining Date : <?php echo $join_date; ?>
-			</div>
-			<div class="form-group">
-				Current Position : <?php echo $curpos; ?>
-			</div>
-			<hr>
+			
+			<div class="col-sm-9 col-lg-9 col-md-9 col-xs-9" style="font-size:17px">
+				<br><br>
+				<div class="table-responsive">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>Employee Id </td>
+								<td><b><?php echo $id; ?></b></td>
+							</tr>
+					
+							<tr>
+								<td>Name: </td>
+								<td><b><?php echo $name;?></b></td>
+							</tr>
+							
+							<tr>
+								<td>Age: </td>
+								<td><b><?php echo $years_exp; ?></b></td>
+							</tr>
+						
+							<tr>
+								<td>E-mail address  : </td>
+								<td><b><?php echo $email; ?></b></td>
+							</tr>
+						
+							<tr>
+								<td>Joining Position: </td>
+								<td><b><?php echo $join_pos; ?></b></td>
+							</tr>
+							<tr>
+								<td>Joining Date : </td>
+								<td><b><?php echo $join_date; ?></b></td>
+							</tr>
+							
+							<tr>
+								<td>Current Position : </td>
+								<td><b><?php echo $curpos; ?></b></td>
+							</tr>
+							<tr><td></td><td></td></tr>
+						</tbody>
+					</table>
+				</div>
+		
 			<form name="change_privs" action="list_profile.php?val=<?php echo $id; ?>" method="POST">
 			<div class="form-group">
+			
 				Priveleges:
 				<br>
 				<?php 
@@ -189,10 +228,9 @@ $sql = "SELECT * FROM personal_details WHERE Emp3_Id=$id";
 			</div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" name="submit" value="Change Privelege" />
-				<br>
 			</div>
 			</form>	
-			</font>
+			</div>
 			</div>
 	</div>
  
